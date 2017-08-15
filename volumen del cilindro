@@ -1,0 +1,23 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+float volu_cilindro(float r, float a);                       // Prototipo
+void main()
+{
+float radio, altura, volumen;
+cin>>radio;
+cout<<"Ingrese la altura:";
+cin>>altura;
+volumen= volu_cilindro(radio, altura);                         //Llamada 
+cout<<"El volumen del cilindro es:"<<volumen;
+getch();
+}
+float volu_cilindro(float r, float a)                           //Declarar
+{float v, PI;
+PI=3.141516
+v=PI*r*r*a;
+return v;
+}
