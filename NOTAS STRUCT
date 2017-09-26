@@ -1,0 +1,88 @@
+#include "stdafx.h"
+#include "stdio.h"
+#include "conio.h"
+#include <string>
+#include <iostream>
+#define max 100
+
+using namespace std;
+struct t_estudiantes{
+	int nroemp;
+	string nombre;
+	string apellido;
+	string direccion;
+	int telef;
+	int cel;
+	int npratica;
+	int nparcial_1;
+	int nparcial_2;
+	int nparcial_3;
+	int examen_final;
+};
+void cargart_estudiantes(t_estudiantes vector[], int n);
+void mostrart_estudiantes(t_estudiantes vector[], int n);
+
+void main(){
+	int n;
+	int cont=1;
+	t_estudiantes vector [max];
+	do{
+		cout<<"Cantidad de estudiantes";
+		cin>>n;
+	}while(n<0 || n>max);
+	cargart_estudiantes(vector,n);
+	mostrart_estudiantes(vector, n);
+getch();
+}
+
+void cargart_estudiantes(t_estudiantes vector[], int n)
+{
+	cin.ignore();
+	for( int i=0; i<n;i++){
+	 vector[i].nroemp=i+1;
+	 cout<<"Ingrese nombre: ";
+	 getline(cin,vector[i].nombre);
+	 cout<<"Ingrese Apellido: ";
+	 getline(cin,vector[i].apellido);
+	 cout<<"Ingrese Direccion: ";
+	 getline(cin,vector[i].direccion);
+	 cout<<"ingrese telefono" ;
+	 cin>>vector[i].telef;
+	 cout<<"Ingrese el Nro. celular: ";
+	 cin>>vector[i].cel;
+	 cout<<"Ingrese Nota Practica";
+	 cin>>vector[i].npratica;
+	 cout<<"Ingrese Nota Primer Parcial: ";
+	 cin>>vector[i].nparcial_1;
+	 cout<<"Ingrese Nota Segundo Parcial: ";
+	 cin>>vector[i].nparcial_2;
+	 cout<<"Ingrese Nota Tercer Parcial: ";
+	 cin>>vector[i].nparcial_3;
+	 cout<<"Ingrese Nota Final: ";
+	 cin>>vector[i].examen_final;
+	 cout<< "\n";
+	 cin.ignore();
+	}
+}
+float promedio_parcial(t_estudiantes vector[], int i)
+{ float prom;
+prom=(vector[i].nparcial_1+ vector[i].nparcial_2 + vector[i].nparcial_3)/3.0;
+return prom;
+}
+
+float promedio_total(t_estudiantes vector[], int i)
+{ float prome;
+prome=(vector[i].npratica*0.2)+ promedio_parcial(vector ,i)*0.4+ (vector[i].examen_final*0.4);
+return prome;
+}
+
+void mostrart_estudiantes(t_estudiantes vector[], int n)
+{ 
+	cout<<"\t               Listado de Notas              "<<endl;
+	cout<<" \tnro  \tnombre \tapellido \tNP \tPP  \tEF \tNF "<<endl;
+
+	for (int i=0; i<n ; i++)
+		{
+		cout<<" \t"<<vector[i].nroemp<<" \t"<<vector[i].nombre<<" \t"<<vector[i].apellido<<" \t"<<vector[i].npratica<<" \t"<<promedio_parcial(vector, i)<<" \t"<<vector[i].examen_final<<" \t"<<promedio_total( vector,i)<<endl;
+	}
+}
