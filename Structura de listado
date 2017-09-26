@@ -1,0 +1,52 @@
+#include "stdafx.h"
+#include "stdio.h"
+#include "conio.h"
+#include <string>
+#include <iostream>
+#define max 100
+
+using namespace std;
+struct templeado{
+	int nroemp;
+	string nombre;
+	string apellido;
+	string direccion;
+	int telef;
+	int cel;
+	float salariobruto;
+};
+templeado lista [max];
+void main()
+{int n,i;
+do
+{
+ cout<<"ingrese el numero de empleados";
+ cin>>n;
+}while(n<0 || n>max);
+
+for(i=0;i<n;i++)
+{cout<<"ingrese los atos del empleaddo nro "<<i+1<<":"<<endl;
+ lista[i].nroemp=i+1;
+ cout<<"ingrese su nombre"<<endl;
+ cin.ignore();
+ getline(cin,lista[i].nombre);
+ cout<<"ingrese su apellido"<<endl;
+ cin.ignore();
+ getline(cin,lista[i].apellido);
+ cout<<"ingrese su direccion"<<endl;
+ cin.ignore();
+ getline(cin,lista[i].direccion);
+ cout<<"ingrese su telefono"<<endl;
+ cin>>lista[i].telef;
+ cout<<"ingrese su celular"<<endl;
+ cin>>lista[i].cel;
+ cout<<"ingrese su salario bruto"<<endl;
+ cin>>lista[i].salariobruto;
+}
+for(i=0;i<n;i++)
+{cout<<" \tnro empleado \tnombre \tapellido \tdireccion \ttelef \tcel \tsalariobruto"<<endl;
+cout<<" \t"<<lista[i].nroemp<<" \t"<<lista[i].nombre<<" \t"<<lista[i].apellido<<" \t"<<lista[i].direccion<<" \t"<<lista[i].telef<<" \t"<<lista[i].cel<<" \t"<<lista[i].salariobruto<<endl;
+}
+getch();
+
+}
